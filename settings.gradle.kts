@@ -32,4 +32,8 @@ pluginManagement {
 
 rootProject.name = "gimmicks"
 
-include("quilt")
+include(
+        "thread",
+            "fabric",
+            "quilt"
+)

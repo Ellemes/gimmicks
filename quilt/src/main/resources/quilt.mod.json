@@ -16,7 +16,9 @@
       {
         "id": "minecraft",
         "versions": "~1.19"
-      }
+      },
+      "org.quiltmc.qsl.core:quilt_base",
+      "org.quiltmc.qsl.core:quilt_resource_loader"
     ],
     "metadata": {
       "name": "Gimmicks",

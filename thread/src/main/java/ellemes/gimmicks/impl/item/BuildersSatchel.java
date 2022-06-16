@@ -1,5 +1,7 @@
 package ellemes.gimmicks.impl.item;
 
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -17,7 +19,9 @@ public class BuildersSatchel extends Item {
     @Override
     public boolean overrideOtherStackedOnMe(ItemStack self, ItemStack other, Slot slot, ClickAction click, Player player, SlotAccess slotAccess) {
         if (other.isEmpty() && click == ClickAction.SECONDARY) {
-            // Open Satchel
+//            player.openMenu(new SimpleMenuProvider((id, inventory, _player) -> {
+//                return new BuildersSatchelMenu(null, id, inventory, slot.index);
+//            }, Component.literal("Builders Satchel")));
             return true;
         }
         return false;
@@ -27,6 +31,7 @@ public class BuildersSatchel extends Item {
     @Override
     public boolean overrideStackedOnOther(ItemStack self, Slot slot, ClickAction click, Player player) {
         if (slot.hasItem() && click == ClickAction.SECONDARY) {
+            ItemStack stack = slot.getItem();
             // Add item to satchel
             return true;
         }

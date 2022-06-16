@@ -2,27 +2,14 @@ import org.gradle.configurationcache.extensions.capitalized
 
 plugins {
     id("ellemes.gradle.mod").apply(false)
-    id("io.github.juuxel.loom-quiltflower").version("1.7.2")
 }
 
-//val excludeFabric: (ModuleDependency) -> Unit = {
-//    it.exclude("net.fabricmc")
-//    it.exclude("net.fabricmc.fabric-api")
-//}
-
 dependencies {
-    val qsl = mod.qsl()
-    val qfapi = mod.fabricApi()
-
-    // todo: temporary, depend on specific qsl modules
-    modImplementation(qsl.module("core", "qsl_base"))
-    modImplementation(qsl.module("core", "resource_loader"))
-    modCompileOnly(qsl.full())
-    modLocalRuntime(qsl.full())
+    val fapi = mod.fabricApi()
 
     // todo: temporary, depend on specific qfapi modules
-    modCompileOnly(qfapi.full())
-    modLocalRuntime(qfapi.full())
+    modCompileOnly(fapi.full())
+    modLocalRuntime(fapi.full())
 }
 
 val releaseModTask = tasks.getByName("releaseMod")
@@ -62,7 +49,7 @@ curseforge {
             artifact = tasks.getByName("minJar")
         })
         relations(closureOf<me.hypherionmc.cursegradle.CurseRelation> {
-            //requiredDependency("qsl")
+            requiredDependency("fabric-api")
         })
         changelogType = "markdown"
         changelog = modChangelog
@@ -80,7 +67,7 @@ modrinth {
     versionName.set(project.name.capitalized() + " " + modVersion)
     uploadFile.set(tasks.getByName("minJar"))
     dependencies {
-        required.project("qvIfYCYJ") // qsl
+        required.project("P7dR8mSH") // fabric-api
     }
     changelog.set(modChangelog)
     gameVersions.set(modTargetVersions)

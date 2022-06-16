@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "gimmicks",
+  "version": "${version}",
+  "entrypoints": {
+    "main": [
+      "ellemes.gimmicks.impl.fabric.Main"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "minecraft": "~1.19"
+  },
+  "name": "Gimmicks",
+  "description": "Random additions of little value .",
+  "authors": [
+    "Ellemes"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/gimmicks",
+    "issues": "https://github.com/Ellemes/gimmicks/issues/",
+    "sources": "https://github.com/Ellemes/gimmicks/"
+  },
+  "icon": "icon.png"
+}
